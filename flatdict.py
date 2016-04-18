@@ -77,9 +77,7 @@ class FlatDict(dict):
                 self._values[parent_key] = FlatDict(delimiter=self._delimiter)
             parent = self._values.get(parent_key)
             if not isinstance(parent, FlatDict):
-                raise TypeError(
-                    'Top level node is not a FlatDict: {0}'.format(
-                        parent_key, type(self._values[parent_key])))
+                return
             self._values[parent_key][child_key] = value
         else:
             self._values[key] = value
